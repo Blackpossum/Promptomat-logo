@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Promptomat Logo System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap">
+<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+<!-- One mask, defined once, referenced by every instance on the page. -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position: absolute">
+	<defs>
+		<mask id="p-knockout" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+			<rect width="120" height="120" fill="#fff"></rect>
+			<g transform="translate(10.8,10.8) scale(0.82) translate(6,0)" fill="none" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M24 24 V96"></path>
+				<path d="M24 24 H60 A24 24 0 0 1 60 72"></path>
+			</g>
+		</mask>
+	</defs>
+</svg>
+
+<div class="shell">
+
+	<header class="masthead">
+		<div class="masthead-copy">
+			<p class="eyebrow">Issue #92 &middot; Milestone: Shared components</p>
+			<h1>Promptomat Logo System</h1>
+			<p>The chosen mark, specified. A capital P knocked out of a rounded gold tile &mdash; one stroke weight, round terminals, all curvature from a single circle. This board fixes the geometry, the lockups, the size floor and the colour behaviour, then shows the mark doing its actual jobs: browser tab, navigation bar, and the sign-in and sign-up screens.</p>
+			<div class="locked">
+				<span class="chip"><span class="swatch"></span> Gold <b>#e1ad66</b></span>
+				<span class="chip">Tile <b>120&times;120, r30</b></span>
+				<span class="chip">Stroke <b>24u &middot; round</b></span>
+				<span class="chip">Ink <b>82% of tile</b></span>
+			</div>
+		</div>
+		<svg class="mark hero-mark" viewBox="0 0 120 120" role="img" aria-label="Promptomat: a capital P knocked out of a rounded gold tile">
+			<rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect>
+		</svg>
+	</header>
+
+	<!-- ═══════════════════ 01 CONSTRUCTION ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">01</p>
+			<h2>The mark</h2>
+			<p>The P is not filled artwork &mdash; it is two stroked paths used as a luminance mask, so the counter is a genuine hole. Whatever sits behind the tile shows through it. That is the property the whole system rests on, and it is why the mark cannot be flattened to a single filled path on export.</p>
+		</div>
+
+		<div class="construction">
+			<div class="plate">
+				<svg viewBox="0 0 120 120" role="img" aria-label="Construction: the tile, the 12-unit module grid, the bowl circle and the two stroke centrelines">
+					<rect width="120" height="120" rx="30" fill="var(--tile)" opacity="0.14"></rect>
+					<g transform="translate(10.8,10.8) scale(0.82) translate(6,0)">
+						<g stroke="#e1ad66" stroke-width="1" opacity="0.22">
+							<path d="M12 0 V120 M24 0 V120 M36 0 V120 M48 0 V120 M60 0 V120 M72 0 V120 M84 0 V120 M96 0 V120"></path>
+							<path d="M0 12 H108 M0 24 H108 M0 36 H108 M0 48 H108 M0 60 H108 M0 72 H108 M0 84 H108 M0 96 H108 M0 108 H108"></path>
+						</g>
+						<circle cx="60" cy="48" r="24" fill="none" stroke="#e1ad66" stroke-width="1.6" opacity="0.7"></circle>
+						<circle cx="60" cy="48" r="2.4" fill="#e1ad66"></circle>
+						<g fill="none" stroke="#e1ad66" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" opacity="0.34">
+							<path d="M24 24 V96"></path>
+							<path d="M24 24 H60 A24 24 0 0 1 60 72"></path>
+						</g>
+						<g fill="none" stroke="#f3f4f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M24 24 V96"></path>
+							<path d="M24 24 H60 A24 24 0 0 1 60 72"></path>
+						</g>
+					</g>
+				</svg>
+				<span class="label">Grid &middot; 12u module</span>
+			</div>
+
+			<div class="plate">
+				<svg viewBox="0 0 120 120" role="img" aria-label="Clear space: a 30 unit margin around the tile on all four sides">
+					<rect x="0.5" y="0.5" width="119" height="119" fill="none" stroke="#e1ad66" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"></rect>
+					<g transform="translate(30,30) scale(0.5)">
+						<rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect>
+					</g>
+					<g stroke="#9ca3af" stroke-width="1" opacity="0.6">
+						<path d="M0 15 H30 M90 15 H120 M15 0 V30 M15 90 V120"></path>
+					</g>
+					<text x="60" y="18" fill="#9ca3af" font-family="monospace" font-size="9" text-anchor="middle">30u</text>
+				</svg>
+				<span class="label">Clear space = corner radius</span>
+			</div>
+
+			<div class="plate">
+				<svg viewBox="4 4 100 112" fill="none" role="img" aria-label="The bare P glyph without its tile, in a box its ink fills exactly" style="width: auto; max-width: none; height: 168px; color: var(--brand-gold)">
+					<rect x="12" y="12" width="84" height="96" fill="none" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 4" opacity="0.55"></rect>
+					<path d="M24 24 V96" stroke="currentColor" stroke-width="24" stroke-linecap="round"></path>
+					<path d="M24 24 H60 A24 24 0 0 1 60 72" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+				<span class="label">Glyph alone &middot; 7:8</span>
+			</div>
+		</div>
+
+		<dl class="spec">
+			<dt>Tile</dt>
+			<dd>120&times;120 with a 30u corner radius, filled <code>#e1ad66</code>. The radius is exactly a quarter of the side, so the corner reads as a squircle rather than a rounded square.</dd>
+			<dt>Ink</dt>
+			<dd>The two paths are drawn in a 120&times;120 local space and placed by <code>translate(10.8,10.8) scale(0.82) translate(6,0)</code>. The 0.82 factor is the &ldquo;ink sits at 82% of the tile&rdquo; rule; the trailing <code>translate(6,0)</code> optically centres a letter whose mass is left-heavy.</dd>
+			<dt>Stroke</dt>
+			<dd>24u, round cap, round join &mdash; one weight everywhere. Stem, bowl and every terminal are the same width, which is what keeps the mark stable when it is scaled down.</dd>
+			<dt>Counter</dt>
+			<dd>The bowl is a half-circle of radius 24u centred at (60,&nbsp;48). Its inner edge therefore sits 12u from that centre, and the bowl ends at (60,&nbsp;72) without returning to the stem &mdash; the counter is open at the bottom left, not sealed.</dd>
+			<dt>Glyph</dt>
+			<dd>Cropped on its own, the ink fills <code>viewBox="12 12 84 96"</code> exactly &mdash; an 84&times;96 box, 7:8. Use this form wherever the mark has to take a single colour.</dd>
+		</dl>
+	</section>
+
+	<!-- ═══════════════════ 02 LOCKUPS ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">02</p>
+			<h2>Lockups</h2>
+			<p>Three approved arrangements. The symbol alone is the default in the product, because the word &ldquo;Promptomat&rdquo; is already in the page title and the nav is short on room; the horizontal lockup is for sign-in, marketing and anywhere the mark appears cold to someone who has not seen it before.</p>
+		</div>
+
+		<div class="lockup-grid">
+			<div class="lockup-cell">
+				<div class="lockup-h">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="wordmark">Prompt<span>omat</span></span>
+				</div>
+				<span class="label">Horizontal &middot; primary</span>
+			</div>
+
+			<div class="lockup-cell">
+				<div class="lockup-v">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="wordmark wordmark-sm">Prompt<span>omat</span></span>
+				</div>
+				<span class="label">Stacked &middot; splash, empty states</span>
+			</div>
+
+			<div class="lockup-cell">
+				<svg class="mark" viewBox="0 0 120 120" aria-hidden="true" style="width: 68px"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+				<span class="label">Symbol &middot; nav, favicon, avatar</span>
+			</div>
+		</div>
+
+		<div class="section-head" style="margin-top: 8px">
+			<h2 style="font-size: 15px">The wordmark face is still open</h2>
+			<p>Three candidates over identical geometry. The app currently ships no webfont at all &mdash; <code>scaffolding.css</code> sets <code>font-family: Arial, sans-serif</code> &mdash; so picking either of the first two adds a font to the bundle. Whichever wins has to be converted to outlines on export so the asset never depends on a face the app does not load.</p>
+		</div>
+
+		<div class="alt-faces">
+			<div class="alt-face">
+				<div class="lockup-h">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="wordmark" style="font-size: 20px">Prompt<span>omat</span></span>
+				</div>
+				<span class="label">IBM Plex Mono 600 &middot; technical</span>
+			</div>
+			<div class="alt-face">
+				<div class="lockup-h">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="wordmark face-silkscreen">PROMPT<span>OMAT</span></span>
+				</div>
+				<span class="label">Silkscreen &middot; from board 1</span>
+			</div>
+			<div class="alt-face">
+				<div class="lockup-h">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="wordmark face-serif">Promptomat</span>
+				</div>
+				<span class="label">Cormorant Garamond &middot; from the concept doc</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════════════════ 03 SIZE ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">03</p>
+			<h2>Size</h2>
+			<p>The same file at every size it is asked to work at. Nothing is redrawn &mdash; this is one SVG scaled, which is the honest test.</p>
+		</div>
+
+		<div class="panel">
+			<div class="size-strip">
+				<div class="size-cell">
+					<svg class="mark s128" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">128</span>
+				</div>
+				<div class="size-cell">
+					<svg class="mark s64" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">64</span>
+				</div>
+				<div class="size-cell">
+					<svg class="mark s48" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">48</span>
+				</div>
+				<div class="size-cell">
+					<svg class="mark s32" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">32</span>
+				</div>
+				<div class="size-cell">
+					<svg class="mark s24" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">24 &middot; nav</span>
+				</div>
+				<div class="size-cell">
+					<svg class="mark s20" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">20</span>
+				</div>
+				<div class="size-cell marginal">
+					<svg class="mark s16" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">16 &middot; floor</span>
+				</div>
+			</div>
+
+			<div class="zoom-row">
+				<div class="zoom">
+					<svg class="mark z16" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">16px, magnified 6&times;</span>
+				</div>
+				<div class="zoom" style="justify-content: center">
+					<p style="margin: 0; max-width: 44ch; font-size: 13.5px; color: var(--ink-muted)">At a 16px render the counter is about <b style="color: var(--ink-strong)">2.6px</b> across and the stem-to-bowl gap about 2.6px. Both survive on a 2&times; display and both close up on a 1&times; one. <b style="color: var(--ink-strong)">Ship the favicon as SVG</b> &mdash; browsers rasterise it at 32px for the tab and 48px for bookmarks, which clears the floor. Do not generate a 16&times;16 ICO from this file without redrawing the counter.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════════════════ 04 COLOUR ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">04</p>
+			<h2>Colour</h2>
+			<p>The tile carries the colour and the P carries none &mdash; it is a hole. So the mark inherits its ground automatically, and there is no &ldquo;on dark&rdquo; and &ldquo;on light&rdquo; variant to maintain. Contrast figures below are the tile against the ground behind it.</p>
+		</div>
+
+		<div class="colour-grid">
+			<div class="colour-cell on-canvas">
+				<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+				<span class="label">Canvas</span>
+				<span class="ratio">9.61 : 1</span>
+			</div>
+			<div class="colour-cell on-card">
+				<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+				<span class="label">Card</span>
+				<span class="ratio">8.86 : 1</span>
+			</div>
+			<div class="colour-cell on-raised">
+				<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+				<span class="label">Raised</span>
+				<span class="ratio">8.24 : 1</span>
+			</div>
+			<div class="colour-cell on-light">
+				<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+				<span class="label">Light ground</span>
+				<span class="ratio">2.02 : 1 &mdash; fails</span>
+			</div>
+			<div class="colour-cell on-canvas">
+				<div class="glyph-box mono-strong">
+					<svg class="glyph" viewBox="12 12 84 96" fill="none" aria-hidden="true"><path d="M24 24 V96" stroke="currentColor" stroke-width="24" stroke-linecap="round"></path><path d="M24 24 H60 A24 24 0 0 1 60 72" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+				</div>
+				<span class="label">Glyph &middot; one colour</span>
+				<span class="ratio">17.68 : 1</span>
+			</div>
+			<div class="colour-cell on-gold">
+				<div class="glyph-box mono-dark">
+					<svg class="glyph" viewBox="12 12 84 96" fill="none" aria-hidden="true"><path d="M24 24 V96" stroke="currentColor" stroke-width="24" stroke-linecap="round"></path><path d="M24 24 H60 A24 24 0 0 1 60 72" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+				</div>
+				<span class="label">Inverted</span>
+				<span class="ratio">9.61 : 1</span>
+			</div>
+		</div>
+
+		<p class="note"><b>On a light ground the tile fails.</b> Gold on <code>#f3f4f6</code> is 2.02:1, well under the 3:1 that a meaningful graphic needs. There is no light theme in the product today, but the mark will land on light grounds the moment it goes on a slide, a README or an OG image. The fix is the one-colour glyph in <code>#0a0d12</code>, not a lighter gold &mdash; and that variant has to be exported alongside the tile rather than improvised later.</p>
+
+		<div class="gold-clash">
+			<div class="gold-half">
+				<span class="gold-chip gold-chip-brand"></span>
+				<div>
+					<b>#e1ad66 &mdash; the logo</b>
+					<small>The gold in the mark as delivered. Accent-400 in the concept doc&rsquo;s ramp.</small>
+				</div>
+			</div>
+			<div class="gold-half">
+				<span class="gold-chip gold-chip-token"></span>
+				<div>
+					<b>#c89b5e &mdash; <code>--text-accent</code></b>
+					<small>The accent already shipped in <code>tokens.css</code>, and the gold board 1 was drawn in.</small>
+				</div>
+			</div>
+		</div>
+
+		<p class="note"><b>These are two different golds and only one can win.</b> They sit 1.25:1 apart &mdash; close enough to look like a rendering error rather than a decision when they appear on the same screen, which they will: the nav mark against a gold focus ring, or the logo above a link tinted <code>--text-accent</code>. Either retune <code>--text-accent</code> and <code>--border-accent</code> to <code>#e1ad66</code>, or redraw the tile at <code>#c89b5e</code>. Not a rendering detail to settle in review &mdash; it is a token change either way.</p>
+	</section>
+
+	<!-- ═══════════════════ 05 BROWSER ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">05</p>
+			<h2>In the browser</h2>
+			<p>Where the mark is smallest and least under our control. Everything here is the real SVG at the real pixel size &mdash; the tab favicon is genuinely 16px wide.</p>
+		</div>
+
+		<div class="browser">
+			<div class="browser-bar">
+				<div class="traffic"><i></i><i></i><i></i></div>
+				<div class="tab tab-active">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="tab-title">Promptomat &mdash; Library</span>
+				</div>
+				<div class="tab tab-dim">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="tab-title">Training Mode</span>
+				</div>
+				<div class="tab tab-dim">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="tab-title">Prompt #4812</span>
+				</div>
+			</div>
+
+			<div class="omnibox">
+				<div class="url">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span><b>promptomat.app</b>/library</span>
+				</div>
+			</div>
+
+			<div class="bookmarks">
+				<span class="bookmark">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					Promptomat
+				</span>
+				<span class="bookmark bookmark-generic"><i></i> Figma</span>
+				<span class="bookmark bookmark-generic"><i></i> GitHub</span>
+				<span class="bookmark bookmark-generic"><i></i> Notion</span>
+			</div>
+
+			<div class="desktop-icons">
+				<div class="desktop-icon">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					Promptomat
+				</div>
+				<div class="desktop-icon">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					Square field
+				</div>
+				<div class="desktop-icon">
+					<div class="pwa-splash">
+						<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+						<span>PROMPTOMAT</span>
+					</div>
+					PWA splash
+				</div>
+			</div>
+		</div>
+
+		<p class="note"><b>The tile is already a squircle, so it must not be masked into another one.</b> iOS, Android and the macOS dock all apply their own corner shape to an app icon. Feed them the tile as-is and the radius is applied twice, which visibly thins the corners. For those targets export the <b>glyph on a full-bleed gold square</b> with no radius of its own and let the platform cut the corner.</p>
+	</section>
+
+	<!-- ═══════════════════ 06 NAVIGATION ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">06</p>
+			<h2>In the navigation bar</h2>
+			<p>Drawn against the app&rsquo;s own tokens &mdash; <code>--surface-card</code> ground, <code>--border-subtle</code> rule, Arial as the app actually sets it. The mark sits at 24px, which is the largest size that leaves the 56px bar its vertical breathing room.</p>
+		</div>
+
+		<div class="app-frame">
+			<nav class="app-nav">
+				<div class="nav-brand">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="nav-name">Promptomat</span>
+				</div>
+				<div class="nav-links">
+					<span class="nav-link nav-link-active">Library</span>
+					<span class="nav-link">Training</span>
+					<span class="nav-link">Intelligence</span>
+					<span class="nav-link">Leaderboard</span>
+				</div>
+				<div class="nav-tail">
+					<span class="avatar">YH</span>
+				</div>
+			</nav>
+			<div class="app-body">
+				<h3>Prompt library</h3>
+				<p>1,248 prompts &middot; 37 awaiting review</p>
+			</div>
+		</div>
+
+		<div class="nav-variants">
+			<div class="nav-variant">
+				<nav class="app-nav nav-compact" style="gap: 16px">
+					<div class="nav-brand">
+						<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					</div>
+					<div class="nav-links">
+						<span class="nav-link nav-link-active">Library</span>
+						<span class="nav-link">Training</span>
+					</div>
+					<div class="nav-tail"><span class="avatar">YH</span></div>
+				</nav>
+				<footer><span class="label">Narrow &middot; symbol only</span></footer>
+			</div>
+
+			<div class="nav-variant">
+				<div class="sidebar-demo">
+					<div class="sidebar">
+						<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+						<i></i><i></i><i></i>
+					</div>
+					<div class="sidebar-body">Rail &middot; symbol at 32px</div>
+				</div>
+				<footer><span class="label">Collapsed rail</span></footer>
+			</div>
+		</div>
+
+		<p class="note"><b>The mark is a link to the root, so it needs an accessible name.</b> Wrapped in the anchor it should carry <code>role="img"</code> and an <code>aria-label</code>, or sit beside a visually hidden &ldquo;Promptomat&rdquo; &mdash; the app already has a <code>.visually-hidden</code> class in <code>scaffolding.css</code> for exactly this. When the wordmark is present the SVG goes <code>aria-hidden</code> instead, so the name is not announced twice.</p>
+	</section>
+
+	<!-- ═══════════════════ 07 AUTH ═══════════════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">07</p>
+			<h2>In sign in and sign up</h2>
+			<p>The card below matches the shipped <code>pages/auth/styles.module.css</code>: 420px cap, <code>--surface-card</code>, hairline <code>--border-subtle</code>, <code>--radius-lg</code>. The logo goes <em>above</em> the card, not inside it &mdash; the card is a form, and putting the brand inside it costs the heading its position as the first thing read.</p>
+		</div>
+
+		<div class="auth-grid">
+			<div class="auth-stage">
+				<div class="auth-brand">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="auth-brand-name">Promptomat</span>
+				</div>
+				<div class="auth-card">
+					<h4>Sign In</h4>
+					<div class="auth-fields">
+						<div class="field">
+							<span>Email</span>
+							<i>you@studio.dev</i>
+						</div>
+						<div class="field field-focus">
+							<span>Password</span>
+							<i>••••••••••</i>
+						</div>
+					</div>
+					<div class="btn-primary">Sign in</div>
+					<p class="auth-foot">No account yet? <a href="#7">Sign up</a></p>
+				</div>
+				<span class="label">Stacked lockup &middot; sign in</span>
+			</div>
+
+			<div class="auth-stage">
+				<div class="auth-brand-row">
+					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="auth-brand-name">Promptomat</span>
+				</div>
+				<div class="auth-card">
+					<h4>Sign Up</h4>
+					<div class="auth-fields">
+						<div class="field">
+							<span>Email</span>
+							<i>Enter your email</i>
+						</div>
+						<div class="field">
+							<span>Password</span>
+							<i>Enter your password</i>
+						</div>
+					</div>
+					<div class="btn-primary">Sign up</div>
+					<p class="auth-foot">Already registered? <a href="#7">Sign in</a></p>
+				</div>
+				<span class="label">Horizontal lockup &middot; sign up</span>
+			</div>
+		</div>
+
+		<div class="split-stage">
+			<div class="split-brand">
+				<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+				<h5>Every prompt, scored by the people who use it.</h5>
+				<p>Train on real submissions, then let Intelligence Mode spend what you learned.</p>
+			</div>
+			<div class="split-form">
+				<h4 style="margin: 0; font-size: 22px; font-weight: 400; color: var(--ink-strong)">Sign In</h4>
+				<div class="auth-fields">
+					<div class="field"><span>Email</span><i>you@studio.dev</i></div>
+					<div class="field"><span>Password</span><i>••••••••••</i></div>
+				</div>
+				<div class="btn-primary">Sign in</div>
+				<p class="auth-foot" style="align-self: flex-start">No account yet? <a href="#7">Sign up</a></p>
+			</div>
+		</div>
+
+		<p class="note"><b>The auth screen has exactly one warm thing on it, and it is the logo.</b> <code>--surface-accent</code> is <code>#e6e9ee</code>, so the primary button is near-white, not gold. That is a deliberate contrast between brand colour and action colour &mdash; worth keeping, but it means the gold has to carry the entire brand read on this screen, which is the argument for the wordmark being present here even though the nav can drop it.</p>
+	</section>
+
+	<!-- ═══════════════════ CLOSING ═══════════════════ -->
+	<footer class="closing">
+		<h2>What ships from this</h2>
+		<ol>
+			<li><b>Settle the gold.</b> <code>#e1ad66</code> or <code>#c89b5e</code> &mdash; one of them, applied to both the artwork and <code>--text-accent</code> / <code>--border-accent</code> / <code>--border-focus</code>. Nothing else here is blocked, but this is.</li>
+			<li><b>Pick the wordmark face</b> and convert it to outlines on export.</li>
+			<li><b>Export three assets:</b> the tile symbol (SVG, for the favicon and the nav), the horizontal lockup (SVG, wordmark outlined), and the one-colour glyph (SVG, <code>currentColor</code>) for light grounds and single-ink printing. Add a fourth &mdash; the glyph on a square, unrounded gold field &mdash; if a PWA or native icon is in scope.</li>
+			<li><b>Then the repo change is small:</b> the symbol replaces <code>public/vite.svg</code> as the favicon, the Vite boilerplate <code>&lt;title&gt;</code> in <code>index.html</code> becomes the product name, and the symbol lands in the nav and above the auth card.</li>
+		</ol>
+
+		<p class="note"><b>Export the mask, not a flattened path.</b> The counter being a hole is the whole idea &mdash; it is what makes the mark inherit its ground, and it is why there is no second colourway to maintain. A Figma &ldquo;copy as SVG&rdquo; that outlines the strokes into one filled shape throws that away silently, and the result looks correct until the first time the mark sits on anything but the canvas colour.</p>
+
+		<p class="note"><b>Two defects in the file as it came out of Figma,</b> for whoever does the export. The <code>viewBox</code> was <code>0 0 121 122</code> around a 121&times;116 tile, leaving six units of dead space at the bottom that silently breaks any centring downstream &mdash; the canonical box is square. And the generated <code>mask0_119_11</code> / <code>clip0_119_11</code> ids collide with themselves if the SVG is inlined more than once on a page; this board avoids that by defining the mask once and referencing it everywhere, and a React component would need <code>useId</code>.</p>
+	</footer>
+
+</div>
+
+</body>
+</html>
