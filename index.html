@@ -21,6 +21,13 @@
 				<path d="M24 24 H60 A24 24 0 0 1 60 72"></path>
 			</g>
 		</mask>
+		<mask id="p-knockout-closed" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+			<rect width="120" height="120" fill="#fff"></rect>
+			<g transform="translate(10.8,10.8) scale(0.82) translate(6,0)" fill="none" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M24 24 V96"></path>
+				<path d="M24 24 H60 A24 24 0 0 1 60 72 H24"></path>
+			</g>
+		</mask>
 	</defs>
 </svg>
 
@@ -111,6 +118,39 @@
 			<dt>Glyph</dt>
 			<dd>Cropped on its own, the ink fills <code>viewBox="12 12 84 96"</code> exactly &mdash; an 84&times;96 box, 7:8. Use this form wherever the mark has to take a single colour.</dd>
 		</dl>
+	</section>
+
+	<!-- ═══════════ 01b WHY THE BOWL STAYS OPEN ═══════════ -->
+	<section class="section">
+		<div class="section-head">
+			<p class="eyebrow">01b</p>
+			<h2>Why the bowl stays open</h2>
+			<p>The bowl arcs down and stops a gap short of the stem. That gap is not a stylistic tic &mdash; it is what keeps the gold a single connected shape. Both marks below are the same construction; only the bowl differs. They are shown over a graded ground so the difference is visible.</p>
+		</div>
+
+		<div class="bowl-compare">
+			<div class="bowl-cell">
+				<div class="bowl-stage">
+					<svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Shipped mark: the bowl stops short of the stem, so the gold stays one connected shape">
+						<rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect>
+					</svg>
+				</div>
+				<span class="label">Open bowl &middot; shipped</span>
+				<p class="bowl-note">The counter stays joined to the rest of the tile through the gap. All the gold is <b>one piece</b>.</p>
+			</div>
+
+			<div class="bowl-cell bowl-cell-bad">
+				<div class="bowl-stage">
+					<svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Rejected alternative: the bowl closes onto the stem, leaving the counter as an isolated island of gold">
+						<rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout-closed)"></rect>
+					</svg>
+				</div>
+				<span class="label">Closed bowl &middot; rejected</span>
+				<p class="bowl-note">Sealing the bowl cuts the counter loose. That centre dot is an <b>island</b> &mdash; gold touching nothing.</p>
+			</div>
+		</div>
+
+		<p class="note"><b>An island is a liability, not just an inelegance.</b> A disconnected region is the first thing antialiasing eats when the mark scales down, and it is the first thing a path optimiser or a flatten-to-single-path export can silently drop. The open bowl removes the failure mode rather than managing it. The letter still reads: a familiar form with a small interruption is perceived as closed, which is another reason this construction needs a letter rather than an abstract shape &mdash; there has to be a form the eye already knows in order to complete it.</p>
 	</section>
 
 	<!-- ═══════════════════ 02 LOCKUPS ═══════════════════ -->
