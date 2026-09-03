@@ -324,27 +324,6 @@
 
 	.size-cell.marginal .label { color: var(--fg-warning, #fbbf24); }
 
-	.zoom-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 14px;
-		padding: 0 30px 30px;
-	}
-
-	.zoom {
-		border: 1px solid var(--rule-subtle);
-		border-radius: 3px;
-		background: var(--inset);
-		padding: 16px 18px 10px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 10px;
-	}
-
-	.zoom .mark { image-rendering: pixelated; }
-
-	.z16 { width: 96px; }
 
 	/* ────────────────────────── 04 colour ─────────────────────────── */
 
