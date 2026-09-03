@@ -6,7 +6,7 @@
 <title>Promptomat Logo System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap">
 <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -145,33 +145,10 @@
 		</div>
 
 		<div class="section-head" style="margin-top: 8px">
-			<h2 style="font-size: 15px">The wordmark face is still open</h2>
-			<p>Three candidates over identical geometry. The app currently ships no webfont at all &mdash; <code>scaffolding.css</code> sets <code>font-family: Arial, sans-serif</code> &mdash; so picking either of the first two adds a font to the bundle. Whichever wins has to be converted to outlines on export so the asset never depends on a face the app does not load.</p>
+			<h2 style="font-size: 15px">The wordmark face is settled</h2>
+			<p>The lockups above are set in <b>Archivo Bold</b>, which is what the app renders. Archivo is already self-hosted in the bundle as the base family, so the wordmark costs nothing extra to ship and cannot drift from the interface it sits in. Earlier boards tried Silkscreen and a serif; both were dropped for the same reason &mdash; they would have added a face the product does not otherwise load. One requirement survives regardless: the wordmark has to be converted to outlines when the lockup is exported, so the asset never depends on a font being available.</p>
 		</div>
 
-		<div class="alt-faces">
-			<div class="alt-face">
-				<div class="lockup-h">
-					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
-					<span class="wordmark" style="font-size: 20px">Prompt<span>omat</span></span>
-				</div>
-				<span class="label">IBM Plex Mono 600 &middot; technical</span>
-			</div>
-			<div class="alt-face">
-				<div class="lockup-h">
-					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
-					<span class="wordmark face-silkscreen">PROMPT<span>OMAT</span></span>
-				</div>
-				<span class="label">Silkscreen &middot; from board 1</span>
-			</div>
-			<div class="alt-face">
-				<div class="lockup-h">
-					<svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
-					<span class="wordmark face-serif">Promptomat</span>
-				</div>
-				<span class="label">Cormorant Garamond &middot; from the concept doc</span>
-			</div>
-		</div>
 	</section>
 
 	<!-- ═══════════════════ 03 SIZE ═══════════════════ -->
@@ -496,7 +473,6 @@
 		<h2>What ships from this</h2>
 		<ol>
 			<li><b>Settle the gold.</b> <code>#e1ad66</code> or <code>#c89b5e</code> &mdash; one of them, applied to both the artwork and <code>--text-accent</code> / <code>--border-accent</code> / <code>--border-focus</code>. Nothing else here is blocked, but this is.</li>
-			<li><b>Pick the wordmark face</b> and convert it to outlines on export.</li>
 			<li><b>Export three assets:</b> the tile symbol (SVG, for the favicon and the nav), the horizontal lockup (SVG, wordmark outlined), and the one-colour glyph (SVG, <code>currentColor</code>) for light grounds and single-ink printing. Add a fourth &mdash; the glyph on a square, unrounded gold field &mdash; if a PWA or native icon is in scope.</li>
 			<li><b>Then the repo change is small:</b> the symbol replaces <code>public/vite.svg</code> as the favicon, the Vite boilerplate <code>&lt;title&gt;</code> in <code>index.html</code> becomes the product name, and the symbol lands in the nav and above the auth card.</li>
 		</ol>
