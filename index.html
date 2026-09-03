@@ -191,22 +191,15 @@
 				</div>
 			</div>
 
-			<div class="raster-row">
-				<figure class="raster">
-					<canvas class="raster-canvas" data-size="16" width="144" height="144" role="img" aria-label="The mark rasterised at 16 pixels, then magnified nine times"></canvas>
-					<figcaption><b>16px</b> source, shown 9&times;<span class="raster-ratio">smear <span data-ratio>&mdash;</span></span></figcaption>
-				</figure>
-				<figure class="raster">
-					<canvas class="raster-canvas" data-size="24" width="144" height="144" role="img" aria-label="The mark rasterised at 24 pixels, then magnified six times"></canvas>
-					<figcaption><b>24px</b> source, shown 6&times;<span class="raster-ratio">smear <span data-ratio>&mdash;</span></span></figcaption>
-				</figure>
-				<figure class="raster">
-					<canvas class="raster-canvas" data-size="32" width="144" height="144" role="img" aria-label="The mark rasterised at 32 pixels, then magnified four and a half times"></canvas>
-					<figcaption><b>32px</b> source, shown 4.5&times;<span class="raster-ratio">smear <span data-ratio>&mdash;</span></span></figcaption>
-				</figure>
+			<div class="zoom-row">
+				<div class="zoom">
+					<svg class="mark z16" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="var(--tile)" mask="url(#p-knockout)"></rect></svg>
+					<span class="label">16px, magnified 6&times;</span>
+				</div>
+				<div class="zoom" style="justify-content: center">
+					<p style="margin: 0; max-width: 44ch; font-size: 13.5px; color: var(--ink-muted)">At a 16px render the counter is about <b style="color: var(--ink-strong)">2.6px</b> across and the stem-to-bowl gap about 2.6px. Both survive on a 2&times; display and both close up on a 1&times; one. <b style="color: var(--ink-strong)">Ship the favicon as SVG</b> &mdash; browsers rasterise it at 32px for the tab and 48px for bookmarks, which clears the floor. Do not generate a 16&times;16 ICO from this file without redrawing the counter.</p>
+				</div>
 			</div>
-
-			<p class="raster-note">Three boxes the same size, three source resolutions &mdash; this is what the browser actually has to work with. Each is the real mark rendered into a bitmap of that many pixels, then blown up; it is not the vector redrawn larger. <b>Smear</b> is the count of half-covered pixels against the count of cleanly cut ones, measured live on this page. At 16 it sits around <b>1.0</b>: as much of the letter is mush as is a clean edge. By 32 it has fallen to well under half that, and the P is crisp. Exact values vary a little with the browser&rsquo;s antialiasing, which is why they are measured here rather than quoted.</p>
 		</div>
 	</section>
 
@@ -493,54 +486,3 @@
 
 </body>
 </html>
-
-<script>
-	(() => {
-		const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-	<mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
-		<rect width="120" height="120" fill="#fff"/>
-		<g transform="translate(10.8,10.8) scale(0.82) translate(6,0)" fill="none" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
-			<path d="M24 24 V96"/>
-			<path d="M24 24 H60 A24 24 0 0 1 60 72"/>
-		</g>
-	</mask>
-	<rect width="120" height="120" rx="30" fill="#e1ad66" mask="url(#m)"/>
-</svg>`;
-
-		const HOLE = 40;
-		const SOLID = 215;
-
-		const render = (image) => {
-			for (const canvas of document.querySelectorAll(".raster-canvas")) {
-				const size = Number(canvas.dataset.size);
-
-				const source = document.createElement("canvas");
-				source.width = source.height = size;
-				const sourceContext = source.getContext("2d", { willReadFrequently: true });
-				sourceContext.drawImage(image, 0, 0, size, size);
-
-				const { data } = sourceContext.getImageData(0, 0, size, size);
-				let hole = 0;
-				let partial = 0;
-				for (let index = 3; index < data.length; index += 4) {
-					const alpha = data[index];
-					if (alpha < HOLE) hole += 1;
-					else if (alpha <= SOLID) partial += 1;
-				}
-
-				const context = canvas.getContext("2d");
-				context.imageSmoothingEnabled = false;
-				context.clearRect(0, 0, canvas.width, canvas.height);
-				context.drawImage(source, 0, 0, canvas.width, canvas.height);
-
-				const readout = canvas.closest(".raster").querySelector("[data-ratio]");
-				if (readout) readout.textContent = hole ? (partial / hole).toFixed(2) : "n/a";
-			}
-		};
-
-		const image = new Image();
-		image.addEventListener("load", () => render(image));
-		image.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(MARK);
-	})();
-</script>
-
